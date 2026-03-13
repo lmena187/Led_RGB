@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "author": "Luis Mena",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 182.4, "left": 129.64, "attrs": {} },
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": -70.2, "left": 2.8, "attrs": {} },
+    {
+      "type": "wokwi-rgb-led",
+      "id": "rgb1",
+      "top": -53.6,
+      "left": 145.1,
+      "attrs": { "common": "cathode" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 43.2,
+      "left": 124.25,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 43.2,
+      "left": 143.45,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 43.2,
+      "left": 153.05,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "r1:2", "rgb1:R", "red", [ "$bb" ] ],
+    [ "r2:2", "rgb1:G", "green", [ "$bb" ] ],
+    [ "r3:2", "rgb1:B", "blue", [ "$bb" ] ],
+    [ "esp:GND.1", "bb1:bn.1", "black", [ "h0" ] ],
+    [ "bb1:15b.f", "bb1:15t.e", "black", [ "v0" ] ],
+    [ "rgb1:R", "bb1:14t.b", "", [ "$bb" ] ],
+    [ "rgb1:COM", "bb1:15t.c", "", [ "$bb" ] ],
+    [ "rgb1:G", "bb1:16t.b", "", [ "$bb" ] ],
+    [ "rgb1:B", "bb1:17t.b", "", [ "$bb" ] ],
+    [ "r2:1", "bb1:16t.e", "", [ "$bb" ] ],
+    [ "r2:2", "bb1:16b.i", "", [ "$bb" ] ],
+    [ "r3:1", "bb1:17t.e", "", [ "$bb" ] ],
+    [ "r3:2", "bb1:17b.i", "", [ "$bb" ] ],
+    [ "r1:1", "bb1:14t.e", "", [ "$bb" ] ],
+    [ "r1:2", "bb1:14b.i", "", [ "$bb" ] ],
+    [ "bb1:14b.j", "esp:18", "red", [ "v86.4", "h105.6", "v115.2", "h-9.6" ] ],
+    [ "bb1:16b.j", "esp:17", "green", [ "v76.8", "h105.6", "v144", "h-9.6" ] ],
+    [ "bb1:17b.j", "esp:16", "blue", [ "v67.2", "h115.2", "v163.2", "h-9.6" ] ],
+    [ "bb1:15b.j", "bb1:bn.12", "black", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
